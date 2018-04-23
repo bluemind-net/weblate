@@ -127,6 +127,8 @@ class ComponentDiscovery(object):
             return result
 
         name = get_val('name')
+        for pattern, repl in settings.REPLACE_PATTERN:
+            name = name.replace(pattern, repl)
         slug = get_val('slug')
         simple_keys = (
             'project', 'branch', 'vcs', 'push_on_commit', 'license_url',
@@ -142,6 +144,7 @@ class ComponentDiscovery(object):
 
         if components.filter(Q(slug=slug) | Q(name=name)).exists():
             base_name = get_val('name', 4)
+            base_name = name.replace(pattern, repl)
             base_slug = get_val('slug', 4)
 
             for i in range(1, 1000):
