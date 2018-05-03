@@ -54,6 +54,7 @@ from weblate.sitemaps import SITEMAPS
 import weblate.accounts.urls
 import weblate.api.urls
 import weblate.wladmin.sites
+from weblate import settings
 
 # URL regexp for language code
 LANGUAGE = r'(?P<lang>[^/]+)'
@@ -1066,3 +1067,5 @@ if settings.DEBUG and 'debug_toolbar' in settings.INSTALLED_APPS:
     urlpatterns += [
         url(r'^__debug__/', include(debug_toolbar.urls)),
     ]
+
+urlpatterns = [url(rf'^{settings.URL_PREFIX}/', include(urlpatterns))]
