@@ -85,11 +85,7 @@ var _rollbarConfig = {
 {% block extra_meta %}
 {% endblock %}
 
-  <script>
-    $(document).ready(function() {
-      $('#bmhead').load('/identity/generic_header/translate');
-    });
-  </script>
+  <script data-cfasync="false" src="{% static 'bmhead.js' %}{{ cache_param }}" type="text/javascript"></script>
  </head>
 
  <body {% if LANGUAGE_BIDI %}class="dir-rtl"{% endif %}>
