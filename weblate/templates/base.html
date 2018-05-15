@@ -85,9 +85,15 @@ var _rollbarConfig = {
 {% block extra_meta %}
 {% endblock %}
 
+  <script>
+    $(document).ready(function() {
+      $('#bmhead').load('/identity/generic_header/translate');
+    });
+  </script>
  </head>
 
  <body {% if LANGUAGE_BIDI %}class="dir-rtl"{% endif %}>
+   <div id="bmhead"></div>
  <header>
 <nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
   <div class="container-fluid">
@@ -99,7 +105,7 @@ var _rollbarConfig = {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{% url 'home' %}"><img class="avatar" src="{% static 'weblate-128.png' %}" /> {{ site_title }}</a>
+      <!--a class="navbar-brand" href="{% url 'home' %}"><img class="avatar" src="{% static 'weblate-128.png' %}" /> {{ site_title }}</a-->
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
