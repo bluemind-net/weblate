@@ -1,0 +1,6 @@
+#!/bin/bash
+cd /home/translate/weblate
+. ../py-dist/bin/activate
+export DJANGO_SETTINGS_MODULE=weblate.settings
+echo "Running weblate with gunicorn."
+gunicorn weblate.wsgi:application --name translate --workers 3 --user translate --group translate --log-level info --bind 0.0.0.0:5059
